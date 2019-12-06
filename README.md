@@ -1,2 +1,4 @@
 # codeigniter-mikrotik-api
-Manajemen User Hotspot Mikrotik Menggunakan Framework CodeIgniter yang diintegrasikan dengan Mikrotik PHP API Class. Kode program ini digunakan pada acara workshop kelompok studi Network Community (NETCOM) dengan topik "Aplikasi Berbasis Jaringan" di STMIK Bumigora Mataram (www.stmikbumigora.ac.id).
+CiMik didevelop menggunakan API PHP mikrotik dikombinasi dengan Framework Codeigniter. Service yang diberikan untuk saat ini adalah VPN, yang nantinya akan menambah service lainnya.
+
+© CiMik. With love from Indonesia

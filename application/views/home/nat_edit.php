@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Remote &rsaquo; Table &mdash; CiMik</title>
+  <title>Remote Edit &mdash; CiMik</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/bootstrap/css/bootstrap.min.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/fontawesome/css/all.min.css';?>">
+  <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/select2/dist/css/select2.min.css';?>">
 
   <!-- CSS Libraries -->
 
@@ -62,10 +63,10 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Service</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Remote</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="<?php echo base_url().'nat'; ?>">List Remote</a></li>
+                <li><a class="nav-link" href="<?php echo base_url().'nat'; ?>">List Remote</a></li>
               </ul>
             </li>
         </aside>
@@ -75,54 +76,63 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Remote List</h1>
+            <h1>Remote Edit</h1>
           </div>
+          
 
           <div class="section-body">
-            <div class="row">
+          <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Port Edit</h4>
+                  </div>
+                  <div class="card-body">
+                  <form method="POST" action="<?php echo $form_action ; ?>" class="needs-validation" novalidate="">
+                    <div class="form-group">
+                    <label>dst-port</label></br>
+                      <?php echo form_error('dst_port', '<label for="dst_port">', '</label>'); ?>
+                      <input type="text" readonly class="form-control" name="dst_port" value="<?php echo $natedit[0]['dst-port'];?>">
+                    </div>
+                    <div class="form-group">
+                      <label>to-ports</label></br>
+                      <?php echo form_error('to_ports', '<label for="to_ports">', '</label>'); ?>
+                      <input type="text" class="form-control" name="to_ports" value="<?php echo $natedit[0]['to-ports'];?>">
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" name="id" value="<?php echo $natedit[0]['.id'];?>">
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                      Edit
+                    </button>
+                  </div>
+                </form>
+                  </div>
+                   <div class="card-footer">
+                    Jaga kerahasiaan data ini.
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>List</h4>
-                    <a href="<?php echo base_url().'nat/add'; ?>" class="btn btn-icon btn-primary"><i class="fa fa-plus"></i></a>
+                    <h4>Note</h4>
                   </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <tr>
-                          <th>No.</th>
-                          <th>Chain</th>
-                          <th>Protocol</th>
-                          <th>dst-port</th>
-                          <th>To Address</th>
-                          <th>To Port</th>
-                          <th>Action</th>
-                        </tr>
-
-                        <?php 
-                          $no=1;
-                         foreach ($nat as $key =>$value) { ?>
-                          
-                        <tr>
-                          <td><?php echo $no++; ?></td>
-                          <td><?php echo $value['chain']; ?></td>
-                          <td><?php echo $value['protocol']; ?></td>
-                          <td><?php echo $value['dst-port']; ?></td>
-                          <td><?php echo $value['to-addresses']; ?></td>
-                          <td><?php echo $value['to-ports']; ?></td>
-                          <td>detail</td>
-                         
-                        </tr>
-                        <?php } ?>
-                      </table>
-                    </div>
+                  <div class="card-body">
+                    <p class="section-title mt-0">akun ini sudah otomatis bisa digunakan sebagai akun vpn PPTP dengan server address : 206.189.84.220.</p>
+                    <p class="section-title mt-0">periksa kembali status akun, apabila tidak bisa login VPN</p>
+                    <p class="section-title mt-0">akun ini bersifat case-sensitive, huruf besar/kecil mempengaruhi login vpn.</p>
+                    <p class="section-title mt-0">apabila ada kendala bisa email ke <a href="mailto:dani@cangkal.id">dani@cangkal.id</a> atau WA ke <a href="https://wa.me/6281346341345">081346341345</a></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-      </div>
+      </div> 
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; <?php echo date("Y"); ?> Developed by <a href="mailto:dani@cangkal.id">cangkal.id</a>
@@ -144,10 +154,9 @@
   <script src="<?php echo base_url().'stisla/dist/assets/js/stisla.js';?>"></script>
   
   <!-- JS Libraies -->
-  <script src="<?php echo base_url().'stisla/dist/assets/modules/jquery-ui/jquery-ui.min.js';?>"></script>
+  <script src="<?php echo base_url().'stisla/dist/assets/modules/select2/dist/js/select2.full.min.js';?>"></script>
 
   <!-- Page Specific JS File -->
-  <script src="<?php echo base_url().'stisla/dist/assets/js/page/components-table.js';?>"></script>
   
   <!-- Template JS File -->
   <script src="<?php echo base_url().'stisla/dist/assets/js/scripts.js';?>"></script>

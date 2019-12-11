@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Remote</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="<?php echo base_url().'home/nat'; ?>">List Remote</a></li>
+                <li><a class="nav-link" href="<?php echo base_url().'nat'; ?>">List Remote</a></li>
               </ul>
             </li>
         </aside>

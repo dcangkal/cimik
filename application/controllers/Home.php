@@ -149,46 +149,4 @@ class Home extends CI_Controller {
 			$this->load->view('home/home_password', $data);			
 		}					
 	}	
-
-	public function nat()
-	{	
-		$host = $this->config->item('host');
-		$user = $this->config->item('user');
-		$pass = $this->config->item('pass');
-		$username = $this->session->userdata('userlogin');
-		$password = $this->session->userdata('passlogin');
-		$API = new Routeros_API();						
-		
-		if ($API->connect($host,$user,$pass))
-		{
-		    //mengecek user&pass vpn
-            $API->write("/tool/user-manager/user/print",false);
-            $API->write('?username='.$username,false);
-            $API->write('?password='.$password,true);
-            $READ = $API->read(false);
-            $ARRAY = $API->parseResponse($READ);
-
-			$total_results = count($READ);
-			if ($total_results > 0){
-				$data['info'] = $ARRAY;
-			}
-
-
-            $API->write("/ip/firewall/nat/print",false);
-            $API->write('?comment='.$username,true);
-            $READ = $API->read(false);
-            $ARRAY = $API->parseResponse($READ);
-            $API->disconnect();
-			$total_nat = count($READ);
-			if ($total_nat > 0){
-				$data['nat'] = $ARRAY;
-			}
-
-			//print_r($data);
-
-		}
-		$this->load->view('home/nat', $data);	
-
-		}
-
 }

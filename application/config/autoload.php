@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session','form_validation','Routeros_API','formatbytesbites');
+$autoload['libraries'] = array('session','form_validation','Routeros_API','formatbytesbites','encrypt');
 
 /*
 | -------------------------------------------------------------------

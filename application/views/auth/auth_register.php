@@ -15,16 +15,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/components.css';?>">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
@@ -92,6 +83,9 @@
                   </div>
                 </form>
               </div>
+            </div>
+            <div class="mt-5 text-muted text-center">
+              Sudah punya Account? <a href="<?php echo $login; ?>">Login Disini</a>
             </div>
             <div class="simple-footer">
                Copyright &copy; <?php echo date("Y"); ?> Developed by <a href="mailto:dani@cangkal.id">cangkal.id</a>

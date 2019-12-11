@@ -8,22 +8,14 @@
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/bootstrap/css/bootstrap.min.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/fontawesome/css/all.min.css';?>">
+  <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/modules/select2/dist/css/select2.min.css';?>">
 
   <!-- CSS Libraries -->
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/components.css';?>">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
@@ -88,21 +80,45 @@
                   </div>
                   <div class="card-body">
                   <form method="POST" action="<?php echo $form_action ; ?>" class="needs-validation" novalidate="">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>dst-port</label></br>
                       <?php echo form_error('dst_port', '<label for="dst_port">', '</label>'); ?>
                       <input type="text" class="form-control" name="dst_port">
+                    </div> -->
+                    <div class="form-group">
+                      <label>dst-nat</label>                      
+                      <?php echo form_error('dst_port', '<label for="dst_port">', '</label>'); ?>
+                      <select class="form-control select2" name="dst_port">
+                      <?php
+                      foreach ($resultport as $val){ 
+                        //echo $val. "\n"; 
+                        echo "<option>$val</option>";
+                      } 
+                      ?>
+                      </select>
                     </div>
                     <div class="form-group">
+                      <label>to-ports</label>                      
+                      <?php echo form_error('to_ports', '<label for="to_ports">', '</label>'); ?>
+                      <select class="form-control select2" name="to_ports">
+                      <?php
+                      foreach ($resultportavailable as $val){ 
+                        //echo $val. "\n"; 
+                        echo "<option>$val</option>";
+                      } 
+                      ?>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group">
                       <label>to-ports</label></br>
                       <?php echo form_error('to_ports', '<label for="to_ports">', '</label>'); ?>
                       <input type="text" class="form-control" name="to_ports">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <input type="hidden" class="form-control" name="chain" value="dstnat">
                       <input type="hidden" class="form-control" name="protocol" value="tcp">
                       <input type="hidden" class="form-control" name="action" value="dst-nat">
-                      <input type="hidden" class="form-control" name="to_addresses" value="172.16.0.1">
+                      <input type="hidden" class="form-control" name="to_addresses" value="<?= $info[0]['ip-address'];?>">
                     </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
@@ -156,6 +172,7 @@
   <script src="<?php echo base_url().'stisla/dist/assets/js/stisla.js';?>"></script>
   
   <!-- JS Libraies -->
+  <script src="<?php echo base_url().'stisla/dist/assets/modules/select2/dist/js/select2.full.min.js';?>"></script>
 
   <!-- Page Specific JS File -->
   

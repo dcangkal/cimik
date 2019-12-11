@@ -14,16 +14,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/components.css';?>">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
@@ -84,7 +75,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4>List</h4>
-                    <a href="<?php echo base_url().'nat/add'; ?>" class="btn btn-icon btn-primary"><i class="fa fa-plus"></i></a>
+                    <a href="<?php echo $link_action ; ?>" class="btn btn-icon btn-primary"><i class="fa fa-plus"></i></a>
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
@@ -110,8 +101,17 @@
                           <td><?php echo $value['dst-port']; ?></td>
                           <td><?php echo $value['to-addresses']; ?></td>
                           <td><?php echo $value['to-ports']; ?></td>
-                          <td>detail</td>
-                         
+                          <td>
+                            <div class="button">
+                            <?php 
+                              $id = $value['.id'];
+                              $key = base64_encode($id);
+                            ?>
+                            <a href="<?= base_url('nat/edit/').$key; ?>" class="btn btn-icon btn-warning"><i class="fas fa-edit"></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="<?= base_url('nat/delete/').$key; ?>" class="btn btn-icon btn-danger" onclick="return confirm('yakin dihapus?');"><i class="fas fa-trash"></i></a>
+                            </div>
+                          </td>                         
                         </tr>
                         <?php } ?>
                       </table>

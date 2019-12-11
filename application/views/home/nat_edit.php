@@ -15,16 +15,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/components.css';?>">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
@@ -95,9 +86,16 @@
                       <input type="text" readonly class="form-control" name="dst_port" value="<?php echo $natedit[0]['dst-port'];?>">
                     </div>
                     <div class="form-group">
-                      <label>to-ports</label></br>
+                      <label>to-ports selected <?php echo $natedit[0]['to-ports'];?> </label>                      
                       <?php echo form_error('to_ports', '<label for="to_ports">', '</label>'); ?>
-                      <input type="text" class="form-control" name="to_ports" value="<?php echo $natedit[0]['to-ports'];?>">
+                      <select class="form-control select2" name="to_ports">
+                      <?php
+                        foreach ($resultportavailable as $val){ 
+                          //echo $val. "\n"; 
+                          echo "<option>$val</option>";
+                        } 
+                      ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <input type="hidden" class="form-control" name="id" value="<?php echo $natedit[0]['.id'];?>">

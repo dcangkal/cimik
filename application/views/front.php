@@ -12,24 +12,6 @@
     <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/custom.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/landing/style.css';?>">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-94034622-3');
-    </script>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-3365215572129036",
-        enable_page_level_ads: true
-      });
-    </script>
 </head>
 
 <body class="">
@@ -65,14 +47,15 @@
                         <div class="badge badge-danger">New</div>
                         CiMik is now have dashboard &nbsp; <i class="fas fa-chevron-right"></i>
                     </a>
-                    <h1>Free VPN Connection</h1>
+                    <h1>Free VPN Remote</h1>
                     <p class="lead">
-                        
+                    CiMik didevelop menggunakan API PHP mikrotik dikombinasi dengan Framework Codeigniter. Service yang diberikan untuk saat ini adalah VPN, yang nantinya akan menambah service lainnya.
+                    <br>&copy; CiMik. With <i class="fas fa-heart text-danger"></i> from Indonesia 
                     </p>
                     <div class="cta">
                         <a class="btn btn-lg btn-warning btn-icon icon-right" href="<?php echo $register ; ?>">Register <i class="fas fa-chevron-right"></i></a> &nbsp;
                         <div class="mt-3 text-job">
-                            MIT License &nbsp;&nbsp;&bull;&nbsp;&nbsp; Version: 2.2.0
+                            MIT License &nbsp;&nbsp;&bull;&nbsp;&nbsp; Version: 1.0.2
                         </div>
                     </div>
                 </div>
@@ -163,13 +146,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h3 class="text-capitalize">CiMik</h3>
                     <div class="pr-lg-5">
-                        <p>CiMik didevelop menggunakan API PHP mikrotik dikombinasi dengan Framework Codeigniter. Service yang diberikan untuk saat ini adalah VPN, yang nantinya akan menambah service lainnya.</p>
-                        <p>&copy; CiMik. With <i class="fas fa-heart text-danger"></i> from Indonesia</p>
                         <div class="mt-4 social-links">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>

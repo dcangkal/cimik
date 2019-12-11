@@ -14,16 +14,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/style.css';?>">
   <link rel="stylesheet" href="<?php echo base_url().'stisla/dist/assets/css/components.css';?>">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
@@ -231,6 +222,10 @@
                           <th scope="row">Ip Address</th>
                           <td><?php if(isset($info[0]['ip-address'])){ echo $info[0]['ip-address']; } ?></td>
                         </tr>
+                        <tr>
+                          <th scope="row">Get IP Address</th>
+                          <td><a href="<?php echo base_url().'home/ipaddress';?>">Klik Disini</a></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -248,6 +243,7 @@
                   </div>
                   <div class="card-body">
                     <p class="section-title mt-0">akun ini sudah otomatis bisa digunakan sebagai akun vpn PPTP dengan server address : 206.189.84.220.</p>
+                    <p class="section-title mt-0">bisa menggunakan vpn L2TP+IPsec PSK, dengan IPsec secret : rahasiadonk. dan server address : 206.189.84.220</p>
                     <p class="section-title mt-0">periksa kembali status akun, apabila tidak bisa login VPN</p>
                     <p class="section-title mt-0">akun ini bersifat case-sensitive, huruf besar/kecil mempengaruhi login vpn.</p>
                     <p class="section-title mt-0">apabila ada kendala bisa email ke <a href="mailto:dani@cangkal.id">dani@cangkal.id</a> atau WA ke <a href="https://wa.me/6281346341345">081346341345</a></p>

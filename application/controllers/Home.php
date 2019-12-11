@@ -149,4 +149,91 @@ class Home extends CI_Controller {
 			$this->load->view('home/home_password', $data);			
 		}					
 	}	
+
+	public function ipaddress()
+	{	
+		$host = $this->config->item('host');
+		$user = $this->config->item('user');
+		$pass = $this->config->item('pass');
+		$username = $this->session->userdata('userlogin');
+		$password = $this->session->userdata('passlogin');
+		$API = new Routeros_API();						
+		
+		if ($API->connect($host,$user,$pass))
+		{
+		    //mengecek user&pass vpn
+            $API->write("/tool/user-manager/user/print",false);
+            $API->write('?username='.$username,false);
+            $API->write('?password='.$password,true);
+            $READ = $API->read(false);
+            $ARRAY = $API->parseResponse($READ);
+
+			$total_results = count($READ);
+			if ($total_results > 0){
+				$data['info'] = $ARRAY;
+			}
+
+			$cekip = $API->comm("/tool/user-manager/user/print");
+			$totalip = count($cekip);
+			for ($i = 0; $i < $totalip; $i++) {
+				if(isset($cekip[$i]['ip-address'])){  
+				$datacekip[]=$cekip[$i]['ip-address'];
+				}
+			}
+			$awalip = ip2long('172.16.0.1');
+			$akhirip = ip2long('172.16.2.255');  
+			for ($ip = $awalip; $ip < $akhirip; $ip++ ) {
+				$dataip[]=long2ip($ip);
+			}
+			$data['resultip']=array_diff($dataip,$datacekip);							
+		}	
+			$data['form_action'] = site_url('home/process_ipaddress');
+			$this->load->view('home/home_ipaddress', $data);			
+	}
+
+	public function process_ipaddress()
+	{
+		$this->form_validation->set_rules('ip_address', 'ip-address', 'required');	
+		
+		if ($this->form_validation->run() == TRUE)
+		{
+			$host = $this->config->item('host');
+			$user = $this->config->item('user');
+			$pass = $this->config->item('pass');
+			$username = $this->session->userdata('userlogin');
+			$password = $this->session->userdata('passlogin');
+			$API = new Routeros_API();						
+			
+			if ($API->connect($host,$user,$pass))
+			{
+			    $ipaddress = $this->input->post('ip_address');
+				
+				//cek ip address
+				$API->write("/tool/user-manager/user/getall",false);
+				$API->write('?ip-address='.$ipaddress,true);
+				$READ = $API->read(false);
+				$ARRAY = $API->parseResponse($READ);
+				if(count($ARRAY)>0){ 
+					echo "<script>alert('ip sudah digunakan!')</script>";
+					redirect('home/ipaddress','refresh');
+				}
+			    else {
+					
+					$API->write("/tool/user-manager/user/set",false);
+					$API->write('=.id='.$username, false);
+					$API->write('=ip-address='.$ipaddress,true);
+					$API->read(false);
+					
+					//$ARRAY = $API->read();
+					//print_r($ARRAY);
+					
+					$API->disconnect();
+								echo "<script>alert('ip address berhasil didapat');
+									window.location = ('" . base_url() . "home');</script>";
+
+				}
+				
+			}		    
+		}				
+	}
 }

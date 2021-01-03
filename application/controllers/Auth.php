@@ -52,8 +52,8 @@ class Auth extends CI_Controller {
 					    $config['smtp_host']= "ssl://mail.cangkal.id";//pengaturan smtp
 					    $config['smtp_port']= "465";
 					    $config['smtp_timeout']= "400";
-					    $config['smtp_user']= "dani@cangkal.id"; // isi dengan email kamu
-					    $config['smtp_pass']= "Passw0rdd4n1"; // isi dengan password kamu
+					    $config['smtp_user']= "email"; // isi dengan email kamu
+					    $config['smtp_pass']= "password"; // isi dengan password kamu
 					    $config['crlf']="\r\n"; 
 					    $config['newline']="\r\n"; 
 					    $config['wordwrap'] = TRUE;
